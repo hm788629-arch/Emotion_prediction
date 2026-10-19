@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mood Reader – emotion detection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<main>
+  <h1>How does this sentence feel?</h1>
+  <p class="lede">Type or paste a sentence. A BiGRU model reads it and tells you which of six emotions it carries, and how sure it is.</p>
+
+  <div class="grid">
+    <form class="card" id="form" autocomplete="off">
+      <label for="text" class="sr" style="position:absolute;left:-9999px">Sentence to analyze</label>
+      <textarea id="text" maxlength="2000" placeholder="I can't believe they remembered my birthday…" required></textarea>
+      <div class="meta"><span>Try a few feelings below</span><span id="count">0 / 2000</span></div>
+      <div class="chips" id="chips"></div>
+      <button class="go" id="go" type="submit">Read the mood</button>
+      <p class="hint">Press Ctrl + Enter to run</p>
+    </form>
+
+    <section class="card result empty" id="result" aria-live="polite">
+      <div class="head">
+        <div class="ring">
+          <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="54"/><circle class="fg" id="arc" cx="60" cy="60" r="54"/></svg>
+          <div class="face" id="face">🫧</div>
+        </div>
+        <div class="verdict">
+          <h2 id="title">Waiting for a sentence</h2>
+          <p id="sub">Your result will appear here.</p>
+        </div>
+      </div>
+      <div class="bars" id="bars"></div>
+      <div id="error"></div>
+    </section>
+  </div>
+
+  <footer><span class="dot" id="dot"></span><span id="status">Checking server…</span></footer>
+</main>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
